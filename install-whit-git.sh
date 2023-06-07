@@ -2,14 +2,12 @@
 
 if command -v apt-get >/dev/null; then
 apt update -y
-apt-get install build-essential libncurses5-dev libpcap-dev make zip unzip wget -y
+apt-get install build-essential libncurses5-dev libpcap-dev make zip unzip git wget -y
 elif command -v yum >/dev/null; then
 yum update -y
-yum install gcc-c++ libpcap-devel.x86_64 libpcap.x86_64 "ncurses*"
+yum install gcc-c++ git libpcap-devel.x86_64 libpcap.x86_64 "ncurses*"
 fi
-sudo wget -O /root/nethogs.zip https://github.com/samsesh/nethogs-Json/archive/refs/heads/master.zip
-unzip /root/nethogs.zip
-mv -f /root/nethogs-Json-master /root/nethogs
+git clone https://github.com/samsesh/nethogs-Json.git /root/nethogs
 chmod 744 /root/nethogs/determineVersion.sh
 cd /root/nethogs/
 sudo make install
